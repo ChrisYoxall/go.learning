@@ -1,8 +1,8 @@
 
 
-To run:  Doing 'go run .[DIR]\main.go' executes program.
+To run:  Doing 'go run main.go' executes program.
 
-To build: Doing 'go build .\main.go' will generate an executable.
+To build: Doing 'go build main.go' will generate an executable.
 
 
 Code organisation (packages): https://golang.org/doc/code
