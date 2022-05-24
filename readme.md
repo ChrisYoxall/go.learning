@@ -24,5 +24,7 @@ Use of the package name 'main' (reserved word) means that will generate an execu
 An array has a fixed size. A slice (data type in its own right) is a dynamically-sized flexible view into the elements of an array. In practice, slices are much more common than arrays.
 
 
-Go is not an Object Oriented language. Can do things like extend the base functionality of Go types using a receiver.
+Go is not an Object Oriented language. Patterns that get used in go are:
+
+    - Define methods on types by adding a receiver in argument lists between the func keyword and method name. Functions with recievers are referred to as methods.
 
