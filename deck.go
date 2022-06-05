@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 // Create 'deck' type which is a slice of strings.
@@ -57,6 +59,20 @@ func (d deck) saveToFile(filename string) error {
 	return os.WriteFile(filename, []byte(d.toString()), 0666)
 }
 
+// Shuffle a deck of cards
+func (d deck) shuffle() {
+
+	// Create random number generator
+	source := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(source)
+
+	// Loop over deck. For each card move it to a new randomly generated position.
+	for i := range d {
+		newPosition := r.Intn(len(d) - 1)
+		d[i], d[newPosition] = d[newPosition], d[i]
+	}
+}
+
 // Read a deck from a file
 func newDeckFromFile(filenmae string) deck {
 
@@ -67,6 +83,6 @@ func newDeckFromFile(filenmae string) deck {
 		os.Exit(1)
 	}
 
-	// Convert bs to string, use split to return a slice of strings then convert to deck
+	// Convert bs to string, use split to return a slice of strings then convert to deck.
 	return deck(strings.Split(string(bs), ", "))
 }
