@@ -39,7 +39,6 @@ func newDeck() deck {
 	}
 
 	return cards
-
 }
 
 // Method to print out values in deck
