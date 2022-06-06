@@ -53,11 +53,6 @@ func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
 }
 
-// Save a deck to disk
-func (d deck) saveToFile(filename string) error {
-	return os.WriteFile(filename, []byte(d.toString()), 0666)
-}
-
 // Shuffle a deck of cards
 func (d deck) shuffle() {
 
@@ -70,6 +65,11 @@ func (d deck) shuffle() {
 		newPosition := r.Intn(len(d) - 1)
 		d[i], d[newPosition] = d[newPosition], d[i]
 	}
+}
+
+// Save a deck to disk
+func (d deck) saveToFile(filename string) error {
+	return os.WriteFile(filename, []byte(d.toString()), 0666)
 }
 
 // Read a deck from a file
