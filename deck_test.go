@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"os"
+	"testing"
+)
 
 // Note how test functions start with upper case.
 
@@ -22,4 +25,24 @@ func TestNewDeck(t *testing.T) {
 		t.Errorf("Expected last card to be 'King of Spades' but got %v'", d[size-1])
 	}
 
+}
+
+func TestSaveDeckToFileAndNewDeckFromFile(t *testing.T) {
+
+	file := "_decktesting"
+
+	// Make sure any test files left from previous runs are removed.
+	os.Remove(file)
+
+	d := newDeck()
+	d.saveToFile(file)
+
+	loadedDeck := newDeckFromFile(file)
+
+	if len(loadedDeck) != 52 {
+		t.Errorf("Expected 52 cards but got %v", len(loadedDeck))
+	}
+
+	// Remove tets file.
+	os.Remove(file)
 }
