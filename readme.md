@@ -25,6 +25,9 @@ To enable 'go test' to work created a package by doing 'go mod init example/card
 
 An array has a fixed size. A slice (data type in its own right) is a dynamically-sized flexible view into the elements of an array. In practice, slices are much more common than arrays.
 
+A struct is a collection of fields.
+
+
 
 Go is not an Object Oriented language. Patterns that get used in go are:
 
