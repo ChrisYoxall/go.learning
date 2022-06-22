@@ -27,7 +27,16 @@ An array has a fixed size. A slice (data type in its own right) is a dynamically
 
 A struct is a collection of fields.
 
+Go passes by value so for primitive data types (bool, integer, float, string and struct) when they are passed to a function that needs to change
+the values you must use pointer syntax where:
 
+    - The & operator applied to a variable will return the address in memory of that variable (known as a pointer)
+    - The * operator:
+        - When used on a type means the type is a pointer to something of that type.
+        - When used on a pointer will access the value in the memory address held by the pointer.
+
+A map in Go is a collection of key-value pairs. All the keys must be of the same type and all the values must be of the same type however the type
+used for keys can be different to the type used for values.
 
 Go is not an Object Oriented language. Patterns that get used in go are:
 
