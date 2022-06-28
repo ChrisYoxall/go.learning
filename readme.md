@@ -41,7 +41,12 @@ used for keys can be different to the type used for values.
 As a general guide use maps to represent a collection of very similar items. Use structs when the items can be very different. Note that for 
 a struct you need to know the fields at compile time, and its harder to iterate over the field values inside a struct.
 
+
 Go is not an Object Oriented language. Patterns that get used in go are:
 
-    - Define methods on types by adding a receiver in argument lists between the func keyword and method name. Functions with recievers are referred to as methods.
+    - Define methods on types by adding a receiver in argument lists between the func keyword and method name. Functions with recievers 
+    are referred to as methods.
+
+    - Create interfaces (groups of methods). Types that implement all interface methods have implemented the interface and can be referred
+    to using the interface (polymorphism).
 
