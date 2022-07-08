@@ -11,7 +11,7 @@ Go resources:
     - Go packages: https://go.dev/pkg
 
     
-
+Good tutorial on unit testing web requests: https://codeburst.io/unit-testing-for-rest-apis-in-go-86c70dada52d
 
 
 To run:  Doing 'go run main.go' executes program.
@@ -27,8 +27,8 @@ An array has a fixed size. A slice (data type in its own right) is a dynamically
 
 A struct is a collection of fields.
 
-Go passes by value so for primitive data types (bool, integer, float, string and struct) when they are passed to a function that needs to change
-the values you must use pointer syntax where:
+Go passes by value which means a copy will be created when passing something to a function. For primitive data types (bool, integer, float, string and struct) when they are passed to a 
+function that needs to change the values you must use pointers where:
 
     - The & operator applied to a variable will return the address in memory of that variable (known as a pointer)
     - The * operator:
@@ -39,7 +39,7 @@ A map in Go is a collection of key-value pairs. All the keys must be of the same
 used for keys can be different to the type used for values.
 
 As a general guide use maps to represent a collection of very similar items. Use structs when the items can be very different. Note that for 
-a struct you need to know the fields at compile time, and its harder to iterate over the field values inside a struct.
+a struct you need to know the fields at compile time, and it's harder to iterate over the field values inside a struct.
 
 
 Go is not an Object Oriented language. Patterns that get used in go are:
@@ -47,6 +47,6 @@ Go is not an Object Oriented language. Patterns that get used in go are:
     - Define methods on types by adding a receiver in argument lists between the func keyword and method name. Functions with recievers 
     are referred to as methods.
 
-    - Create interfaces (groups of methods). Types that implement all interface methods have implemented the interface and can be referred
-    to using the interface (polymorphism).
+    - Create interfaces. Interfaces are collections of the signature of methods or other interfaces. Types that implement everything in the interface have implemented the interface and can
+    be referred to using the interface (polymorphism).
 
