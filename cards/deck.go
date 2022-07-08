@@ -8,7 +8,8 @@ import (
 	"time"
 )
 
-// Create 'deck' type which is a slice of strings.
+// Create 'deck' type which is a slice of strings. Once defined can replace
+// any '[]string' with 'deck'
 type deck []string
 
 // Return string representation of deck. This is an example of a method
