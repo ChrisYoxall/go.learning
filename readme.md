@@ -44,6 +44,16 @@ As a general guide use maps to represent a collection of very similar items. Use
 a struct you need to know the fields at compile time, and it's harder to iterate over the field values inside a struct.
 
 
+Go Routines:
+
+    - Always get one main go routine started when the program starts.
+    - Can create additional go routines by using the keyword 'go' in front of a function call.
+    - The Go scheduler manages go routines and by default only uses 1 CPU. This means only 1 go routine actively runs at once no matter how many exist (concurrent processing).
+    - Can utilise multiple CPU cores in which case there can be a go routine actively running on each CPU (parallel processing). Using 1 CPU is usually recommended.
+    - Channels allow different go routines to communicate via the '<-' operator.
+
+
+
 Go is not an Object Oriented language. Patterns that get used in go are:
 
     - Define methods on types by adding a receiver in argument lists between the func keyword and method name. Functions with recievers 
