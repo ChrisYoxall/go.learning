@@ -1,6 +1,10 @@
 
 Go course on Udemy: https://www.udemy.com/course/go-the-complete-developers-guide/learn/
 
+Web developer course on Udemy: https://www.udemy.com/course/go-programming-language/ and repo at https://github.com/GoesToEleven/golang-web-dev
+
+
+
 https://www.youtube.com/watch?v=1MXIGYrMk80
 
 freeCodeCamp.org learn go: https://www.youtube.com/watch?v=YS4e4q9oBaU
