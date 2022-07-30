@@ -27,6 +27,8 @@ Use of the package name 'main' (reserved word) means that will generate an execu
 To enable 'go test' to work created a package by doing 'go mod init example/cards'
 
 
+TYPES & POINTERS
+
 An array has a fixed size. A slice (data type in its own right) is a dynamically-sized flexible view into the elements of an array. In practice, slices are much more common than arrays.
 
 A struct is a collection of fields.
@@ -47,6 +49,18 @@ used for keys can be different to the type used for values.
 As a general guide use maps to represent a collection of very similar items. Use structs when the items can be very different. Note that for 
 a struct you need to know the fields at compile time, and it's harder to iterate over the field values inside a struct.
 
+Can create anonymous types which are useful if you need a data structure that won't be used again, perhaps when marshaling/unmarshalling data or passing data to a template. For example:
+
+        person := struct {
+            fname string
+            lname string
+        }{
+            fname: "Chris",
+            lname: "Yoxall",
+        }
+
+
+GO ROUTINES
 
 Go Routines:
 
@@ -57,6 +71,8 @@ Go Routines:
     - Channels allow different go routines to communicate via the '<-' operator.
 
 
+
+INTERFACES AND PATTERNS
 
 Go is not an Object Oriented language. Patterns that get used in go are:
 
