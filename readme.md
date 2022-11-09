@@ -1,21 +1,22 @@
 
-Go course on Udemy: https://www.udemy.com/course/go-the-complete-developers-guide/learn/
+General resources:
 
-Web developer course on Udemy: https://www.udemy.com/course/go-programming-language/ and repo at https://github.com/GoesToEleven/golang-web-dev
+    - Go course on Udemy: https://www.udemy.com/course/go-the-complete-developers-guide/learn
+    - Web developer course on Udemy: https://www.udemy.com/course/go-programming-language and repo at https://github.com/GoesToEleven/golang-web-dev
+    - Go Handbook: https://www.freecodecamp.org/news/go-beginners-handbook
+    - Learn Go Programming by Building 11 Projects (freecodecamp): https://www.youtube.com/watch?v=jFfo23yIWac
+    - Pluralsight: https://app.pluralsight.com/paths/skill/go-core-language
 
 
+Good tutorial on unit testing web requests: https://codeburst.io/unit-testing-for-rest-apis-in-go-86c70dada52d
 
-https://www.youtube.com/watch?v=1MXIGYrMk80
-
-freeCodeCamp.org learn go: https://www.youtube.com/watch?v=YS4e4q9oBaU
 
 Go resources:
 
     - Code organisation (packages): https://go.dev/doc/code
     - Go packages: https://go.dev/pkg
+    - Effective Go: https://go.dev/doc/effective_go
 
-    
-Good tutorial on unit testing web requests: https://codeburst.io/unit-testing-for-rest-apis-in-go-86c70dada52d
 
 
 To run:  Doing 'go run main.go' executes program.
