@@ -13,17 +13,22 @@ Good tutorial on unit testing web requests: https://codeburst.io/unit-testing-fo
 
 Go resources:
 
-    - Code organisation (packages): https://go.dev/doc/code
+    - Getting started covers adding packages and links to modules tutorial https://go.dev/doc/tutorial/getting-started
+    - Code organisation (creating packages): https://go.dev/doc/code
     - Go packages: https://go.dev/pkg
     - Effective Go: https://go.dev/doc/effective_go
 
 
 
-To run:  Doing 'go run main.go' executes program.
+To run:  Doing 'go run main.go' (or replace 'main.go' with '.') executes the program.
+
+A go file using the reserved name 'main' is requied to generate an executable. The 'main.go' file needs a function called 'main'.
 
 To build: Doing 'go build main.go' will generate an executable.
 
-Having a package name of 'main' (reserved word) is requied to generate an executable. The 'main.go' file needs a function called 'main'.
+Packages:
+    - collections of source files in the same directory that are compiled together.
+    - standard library packages installed with go are at https://pkg.go.dev/std
 
 Dependencies:
     - are tracked through the projects module file called go.mod.
