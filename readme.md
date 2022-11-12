@@ -20,7 +20,7 @@ Go resources:
 
 
 
-To run:  Doing 'go run main.go' (or replace 'main.go' with '.') executes the program.
+To run: Doing 'go run main.go' (or replace 'main.go' with '.') executes the program.
 
 A go file using the reserved name 'main' is requied to generate an executable. The 'main.go' file needs a function called 'main'.
 
@@ -36,7 +36,11 @@ Dependencies:
     - to publish a module, the module path in go.mod must be a location from which Go tools can download your module. 
     - for more, refer: https://go.dev/doc/modules/managing-dependencies
 
-To run tests: Do 'go test'. Needed a got.mod file to exist. 
+To run tests: Do 'go test'. Needed a got.mod file to exist.
+
+Workspace:
+    - by default it is at $HOME/go.
+    - all installed packages (i.e. from doing go install) are here. This is the GOPATH.
 
 
 TYPES & POINTERS
