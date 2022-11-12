@@ -23,9 +23,15 @@ To run:  Doing 'go run main.go' executes program.
 
 To build: Doing 'go build main.go' will generate an executable.
 
-Use of the package name 'main' (reserved word) means that will generate an executable. The 'main.go' file needs a function called 'main'
+Having a package name of 'main' (reserved word) is requied to generate an executable. The 'main.go' file needs a function called 'main'.
 
-To enable 'go test' to work created a package by doing 'go mod init example/cards'
+Dependencies:
+    - are tracked through the projects module file called go.mod.
+    - create go.mod file by something like 'go mod init example/cards'.
+    - to publish a module, the module path in go.mod must be a location from which Go tools can download your module. 
+    - for more, refer: https://go.dev/doc/modules/managing-dependencies
+
+To run tests: Do 'go test'. Needed a got.mod file to exist. 
 
 
 TYPES & POINTERS
