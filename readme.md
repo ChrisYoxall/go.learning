@@ -16,7 +16,7 @@ Go resources:
     - Getting started covers adding packages and links to modules tutorial https://go.dev/doc/tutorial/getting-started
     - Code organisation (creating packages): https://go.dev/doc/code
     - Go packages: https://go.dev/pkg
-    - Effective Go: https://go.dev/doc/effective_go
+    - Effective Go (see note near top about being outdated): https://go.dev/doc/effective_go
 
 
 
