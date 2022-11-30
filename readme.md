@@ -19,16 +19,13 @@ Go resources:
     - Effective Go (see note near top about being outdated): https://go.dev/doc/effective_go
 
 
-
-To run: Doing 'go run main.go' (or replace 'main.go' with '.') executes the program.
-
-A go file using the reserved name 'main' is requied to generate an executable. The 'main.go' file needs a function called 'main'.
-
-To build: Doing 'go build main.go' will generate an executable.
-
 Packages:
-    - collections of source files in the same directory that are compiled together.
+    - collections of source files in the same directory that are compiled together
+    - each go file declares which package it is part of
+    - a program can be made up of multiple packages
+    - to use code in a package include it via the import keyword
     - standard library packages installed with go are at https://pkg.go.dev/std
+
 
 Dependencies:
     - are tracked through the projects module file called go.mod.
@@ -36,11 +33,22 @@ Dependencies:
     - to publish a module, the module path in go.mod must be a location from which Go tools can download your module. 
     - for more, refer: https://go.dev/doc/modules/managing-dependencies
 
-To run tests: Do 'go test'. Needed a got.mod file to exist.
 
 Workspace:
     - by default it is at $HOME/go.
     - all installed packages (i.e. from doing go install) are here. This is the GOPATH.
+
+
+
+
+
+To run: Doing 'go run main.go' (or replace 'main.go' with '.') executes the program.
+
+A go file using the reserved name 'main' is requied to generate an executable. The 'main.go' file needs a function called 'main'.
+
+To build: Doing 'go build main.go' will generate an executable.
+
+To run tests: Do 'go test'. Needed a got.mod file to exist.
 
 
 TYPES & POINTERS
