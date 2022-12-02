@@ -53,27 +53,29 @@ To run tests: Do 'go test'. Needed a got.mod file to exist.
 
 TYPES & POINTERS
 
-An array has a fixed size. A slice (data type in its own right) is a dynamically-sized flexible view into the elements of an array. In practice, slices are much more common than arrays.
+An array has a fixed size. A slice (data type in its own right) is a dynamically-sized flexible view into the elements of an array. 
 
 A struct is a collection of fields.
 
-Go passes by value which means a copy will be created when passing something to a function. For primitive data types (bool, integer, float, string, array and struct) when they are passed to a 
-function that needs to change the values you must use pointers where:
+Types are either value or reference types, where reference means the type has a reference to another type.
+
+Go passes by value which means a copy will be created when passing something to a function.
+
+The data types of bool, integer, float, string, array and struct are value types. To change in a function will need to use pointers to avoid copying:
 
     - The & operator applied to a variable will return the address in memory of that variable (known as a pointer)
     - The * operator:
         - When used on a type means the type is a pointer to something of that type.
         - When used on a pointer will access the value in the memory address held by the pointer.
 
-Types are either value or reference types, where reference means the type has a reference to another type.
-
 A map in Go is a collection of key-value pairs. All the keys must be of the same type and all the values must be of the same type however the type
 used for keys can be different to the type used for values.
 
-As a general guide use maps to represent a collection of very similar items. Use structs when the items can be very different. Note that for 
+As a general rule use maps to represent a collection of very similar items and structs when the items can be very different. Note that for 
 a struct you need to know the fields at compile time, and it's harder to iterate over the field values inside a struct.
 
-Can create anonymous types which are useful if you need a data structure that won't be used again, perhaps when marshaling/unmarshalling data or passing data to a template. For example:
+Can create anonymous types which are useful if you need a data structure that won't be used again, perhaps when marshaling/unmarshalling data or
+passing data to a template. For example:
 
         person := struct {
             fname string
@@ -90,8 +92,10 @@ Go Routines:
 
     - Always get one main go routine started when the program starts.
     - Can create additional go routines by using the keyword 'go' in front of a function call.
-    - The Go scheduler manages go routines and by default only uses 1 CPU. This means only 1 go routine actively runs at once no matter how many exist (concurrent processing).
-    - Can utilise multiple CPU cores in which case there can be a go routine actively running on each CPU (parallel processing). Using 1 CPU is usually recommended.
+    - The Go scheduler manages go routines and by default only uses 1 CPU. This means only 1 go routine actively runs at once no matter
+        how many exist (concurrent processing).
+    - Can utilise multiple CPU cores in which case there can be a go routine actively running on each CPU (parallel processing). Using 1 CPU
+        is usually recommended.
     - Channels allow different go routines to communicate via the '<-' operator.
 
 
@@ -101,8 +105,8 @@ INTERFACES AND PATTERNS
 Go is not an Object Oriented language. Patterns that get used in go are:
 
     - Define methods on types by adding a receiver in argument lists between the func keyword and method name. Functions with recievers 
-    are referred to as methods.
+        are referred to as methods.
 
-    - Create interfaces. Interfaces are collections of the signature of methods or other interfaces. Types that implement everything in the interface have implemented the interface and can
-    be referred to using the interface (polymorphism).
+    - Create interfaces. Interfaces are collections of the signature of methods or other interfaces. Types that implement everything in the
+        interface have implemented the interface and can be referred to using the interface (polymorphism).
 
