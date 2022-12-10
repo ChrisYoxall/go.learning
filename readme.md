@@ -50,6 +50,12 @@ To build: Doing 'go build main.go' will generate an executable.
 
 To run tests: Do 'go test'. Needed a got.mod file to exist.
 
+On work laptop:
+
+    Cant run own build binaries unless they are in the c:\dev folder.
+    Doing 'go run' builds and runs from a temp directory.  To see which directory do 'go run -work main.go'.
+    To change directory used set the GOTMPDIR environment variable. For example do :$env:GOTMPDIR = "C:\dev" (or set permanaently)
+
 
 TYPES & POINTERS
 
