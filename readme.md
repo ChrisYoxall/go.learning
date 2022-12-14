@@ -3,7 +3,6 @@ General resources:
 
     - Udemy Go course: https://www.udemy.com/course/go-the-complete-developers-guide/learn
     - Udemy web developer course: https://www.udemy.com/course/go-programming-language and repo at https://github.com/GoesToEleven/golang-web-dev
-    - Go Handbook: https://www.freecodecamp.org/news/go-beginners-handbook
     - Learn Go Programming by Building 11 Projects (freecodecamp): https://www.youtube.com/watch?v=jFfo23yIWac
     - Pluralsight: https://app.pluralsight.com/paths/skill/go-core-language
 
