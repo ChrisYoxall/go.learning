@@ -47,7 +47,7 @@ A go file using the reserved name 'main' is requied to generate an executable. T
 
 To build: Doing 'go build main.go' will generate an executable.
 
-To run tests: Do 'go test'. Needed a got.mod file to exist.
+To run tests: Do 'go test'. Needed a go.mod file to exist.
 
 On work laptop:
 
@@ -112,6 +112,6 @@ Go is not an Object Oriented language. Patterns that get used in go are:
     - Define methods on types by adding a receiver in argument lists between the func keyword and method name. Functions with recievers 
         are referred to as methods.
 
-    - Create interfaces. Interfaces are collections of the signature of methods or other interfaces. Types that implement everything in the
+    - Create interfaces. Interfaces are collections of method signatures or other interfaces. Types that implement everything in the
         interface have implemented the interface and can be referred to using the interface (polymorphism).
 
