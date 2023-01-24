@@ -1,38 +1,66 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io"
+	"log"
 	"net/http"
-	"os"
 )
+
+// Note use of StructTag https://pkg.go.dev/reflect#StructTag which allow metadata to be attached
+// to a field. Used here to provide information to the unmarshal opertion on how to transform field.
+type Data struct {
+	Status  string
+	Code    int
+	Total   int
+	Persons []Person `json:"data"`
+}
+
+type Person struct {
+	Id        int
+	FirstName string
+	LastName  string
+	Gender    string
+	Email     string
+	Phone     string
+	Address   Address
+}
+
+type Address struct {
+	Id         int
+	Street     string
+	StreetName string
+	City       string
+	Country    string
+	CountyCode string `json:"county_code"`
+}
 
 func main() {
 
-	resp, err := http.Get("http://google.com")
+	resp, error := http.Get("https://fakerapi.it/api/v1/persons?_quantity=3&_birthday_start=2005-01-01")
 
-	if err != nil {
-		fmt.Println("Error:", err)
-		os.Exit(1)
+	if error != nil {
+		log.Fatal("Error while making request: ", error)
 	}
 
 	defer resp.Body.Close()
 
-	// Instead of using this syntax for creating a slice, will use make
-	//bs := []byte{}
+	bodyBytes, error := io.ReadAll(resp.Body)
 
-	bs := make([]byte, 99999)
-	numBytes, _ := resp.Body.Read(bs)
+	if error != nil {
+		log.Fatal("Error reading response: ", error)
+	}
 
-	fmt.Println(string(bs))
-	fmt.Println("Bytes returned:", numBytes)
+	var data Data
+	error = json.Unmarshal(bodyBytes, &data)
 
-	// NOTE: Above code was used to demonstrate interfaces and relies on declaring a byte slice
-	// that is large enough to hold the response. If its too small not all response is printed.
-	// Instead do this to print the body
-	// bodyBytes, _ := io.ReadAll(resp.Body)
-	// fmt.Println(string(bodyBytes))
-	//
-	// Or can do:
-	// io.Copy(os.Stdout, resp.Body)
+	if error != nil {
+		log.Fatal("Error unmarshalling response: ", error)
+	}
 
+	fmt.Println(string(bodyBytes))
+	fmt.Println(data)
+
+	fmt.Println("Response reported", data.Total, "people returned. A total of", len(data.Persons), "people were unmarshalled.")
 }
