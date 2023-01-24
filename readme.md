@@ -49,11 +49,20 @@ To build: Doing 'go build main.go' will generate an executable.
 
 To run tests: Do 'go test'. Needed a go.mod file to exist.
 
+
 On work laptop:
 
     Cant run own build binaries unless they are in the c:\dev folder.
     Doing 'go run' builds and runs from a temp directory.  To see which directory do 'go run -work main.go'.
     To change directory used set the GOTMPDIR environment variable. For example do :$env:GOTMPDIR = "C:\dev" (or set permanaently)
+
+SSH:
+
+    Have enabled SSH for this repo on GitHub. Are good instructions at https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
+    Currently on work laptop will need to:
+    
+        1. Start the ssh-agent in the background: eval "$(ssh-agent -s)"
+        2. Add the private SSH key to the agent: ssh-add ~/.ssh/id_rsa_personal_github
 
 
 TYPES & POINTERS
