@@ -72,9 +72,9 @@ func (d deck) saveToFile(filename string) error {
 }
 
 // Read a deck from a file
-func newDeckFromFile(filenmae string) deck {
+func newDeckFromFile(filename string) deck {
 
-	bs, err := os.ReadFile(filenmae)
+	bs, err := os.ReadFile(filename)
 
 	if err != nil {
 		fmt.Println("Error: ", err)
