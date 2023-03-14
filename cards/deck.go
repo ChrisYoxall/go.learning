@@ -18,9 +18,7 @@ type deck []string
 // By convention the reference (d in this case) is a very short abbreviation.
 // While d is similar to 'this' or 'self' by convention go avoids those words.
 func (d deck) toString() string {
-
-	// Do a type conversion from deck to slice of strings
-	return strings.Join([]string(d), ", ")
+	return strings.Join(d, ", ")
 }
 
 // Create a deck of 52 cards.
@@ -74,15 +72,15 @@ func (d deck) saveToFile(filename string) error {
 }
 
 // Read a deck from a file
-func newDeckFromFile(filenmae string) deck {
+func newDeckFromFile(filename string) deck {
 
-	bs, err := os.ReadFile(filenmae)
+	bs, err := os.ReadFile(filename)
 
 	if err != nil {
 		fmt.Println("Error: ", err)
 		os.Exit(1)
 	}
 
-	// Convert bs to string, use split to return a slice of strings then convert to deck.
-	return deck(strings.Split(string(bs), ", "))
+	// Convert bs to string then use split to return a slice of strings.
+	return strings.Split(string(bs), ", ")
 }

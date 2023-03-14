@@ -9,6 +9,9 @@ General resources:
 
 Good tutorial on unit testing web requests: https://codeburst.io/unit-testing-for-rest-apis-in-go-86c70dada52d
 
+Tools:
+
+    - Fiber (https://gofiber.io): A web framework
 
 Go resources:
 
