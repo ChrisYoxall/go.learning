@@ -1,10 +1,10 @@
 
 General resources:
 
-    - Udemy Go course: https://www.udemy.com/course/go-the-complete-developers-guide/learn
-    - Udemy web developer course: https://www.udemy.com/course/go-programming-language and repo at https://github.com/GoesToEleven/golang-web-dev
-    - Learn Go Programming by Building 11 Projects (freecodecamp): https://www.youtube.com/watch?v=jFfo23yIWac
-    - Pluralsight: https://app.pluralsight.com/paths/skill/go-core-language
+- Udemy Go course: https://www.udemy.com/course/go-the-complete-developers-guide/learn
+- Udemy web developer course: https://www.udemy.com/course/go-programming-language and repo at https://github.com/GoesToEleven/golang-web-dev
+- Learn Go Programming by Building 11 Projects (freecodecamp): https://www.youtube.com/watch?v=jFfo23yIWac
+- Pluralsight: https://app.pluralsight.com/paths/skill/go-core-language
 
 
 Good tutorial on unit testing web requests: https://codeburst.io/unit-testing-for-rest-apis-in-go-86c70dada52d
