@@ -11,34 +11,34 @@ Good tutorial on unit testing web requests: https://codeburst.io/unit-testing-fo
 
 Tools:
 
-    - Fiber (https://gofiber.io): A web framework
+- Fiber (https://gofiber.io): A web framework
 
 Go resources:
 
-    - Getting started covers adding packages and links to modules tutorial https://go.dev/doc/tutorial/getting-started
-    - Code organisation (creating packages): https://go.dev/doc/code
-    - Go packages: https://go.dev/pkg
-    - Effective Go (see note near top about being outdated): https://go.dev/doc/effective_go
+- Getting started covers adding packages and links to modules tutorial https://go.dev/doc/tutorial/getting-started
+- Code organisation (creating packages): https://go.dev/doc/code
+- Go packages: https://go.dev/pkg
+- Effective Go (see note near top about being outdated): https://go.dev/doc/effective_go
 
 
 Packages:
-    - collections of source files in the same directory that are compiled together
-    - each go file declares which package it is part of
-    - a program can be made up of multiple packages
-    - to use code in a package include it via the import keyword
-    - standard library packages installed with go are at https://pkg.go.dev/std
+- collections of source files in the same directory that are compiled together
+- each go file declares which package it is part of
+- a program can be made up of multiple packages
+- to use code in a package include it via the import keyword
+- standard library packages installed with go are at https://pkg.go.dev/std
 
 
 Dependencies:
-    - are tracked through the projects module file called go.mod.
-    - create go.mod file by something like 'go mod init example/cards'.
-    - to publish a module, the module path in go.mod must be a location from which Go tools can download your module. 
-    - for more, refer: https://go.dev/doc/modules/managing-dependencies
+- are tracked through the projects module file called go.mod.
+- create go.mod file by something like 'go mod init example/cards'.
+- to publish a module, the module path in go.mod must be a location from which Go tools can download your module. 
+- for more, refer: https://go.dev/doc/modules/managing-dependencies
 
 
 Workspace:
-    - by default it is at $HOME/go.
-    - all installed packages (i.e. from doing go install) are here. This is the GOPATH.
+- by default it is at $HOME/go.
+- all installed packages (i.e. from doing go install) are here. This is the GOPATH.
 
 
 
