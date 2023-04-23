@@ -1,3 +1,6 @@
+// Simple web server. For anything more than a few responses there are plenty
+// of web frameworks to use such as Gin or Fiber.
+
 package main
 
 import (
