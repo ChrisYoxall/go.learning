@@ -1,4 +1,6 @@
 
+## Resources
+
 General resources:
 
 - Udemy Go course: https://www.udemy.com/course/go-the-complete-developers-guide/learn
@@ -32,6 +34,7 @@ Dependencies:
 - create go.mod file by something like 'go mod init example/cards'.
 - to publish a module, the module path in go.mod must be a location from which Go tools can download your module. 
 - for more, refer: https://go.dev/doc/modules/managing-dependencies
+- also refer https://go.dev/blog/using-go-modules
 
 
 Workspace:
@@ -40,7 +43,25 @@ Workspace:
 
 
 
+## Work laptop
 
+- Cant run own build binaries unless they are in the c:\dev folder.
+- Doing 'go run' builds and runs from a temp directory.  To see which directory do 'go run -work main.go'.
+- To change directory used set the GOTMPDIR environment variable. For example do :$env:GOTMPDIR = "C:\dev" (or set permanaently).
+- When debugging found that I had to also set the output directory to a location within the c:\dev hierarchy as well.
+
+## SSH
+
+Have enabled SSH for this repo on GitHub. Are good instructions at https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
+
+Currently on work laptop will need to:
+
+1. Start the ssh-agent in the background: eval "$(ssh-agent -s)"
+2. Add the private SSH key to the agent: ssh-add ~/.ssh/id_rsa_personal_github
+3. Will need to push, pull etc via the command line rather than use VS Code running in WSL.
+
+
+## Build and Run
 
 To run: Doing 'go run main.go' (or replace 'main.go' with '.') executes the program.
 
@@ -51,39 +72,11 @@ To build: Doing 'go build main.go' will generate an executable.
 To run tests: Do 'go test'. Needed a go.mod file to exist.
 
 
-On work laptop:
-
-    Cant run own build binaries unless they are in the c:\dev folder.
-    Doing 'go run' builds and runs from a temp directory.  To see which directory do 'go run -work main.go'.
-    To change directory used set the GOTMPDIR environment variable. For example do :$env:GOTMPDIR = "C:\dev" (or set permanaently).
-    When debugging found that I had to also set the output directory to a location within the c:\dev hierarchy as well.
-
-SSH:
-
-    Have enabled SSH for this repo on GitHub. Are good instructions at https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
-    Currently on work laptop will need to:
-
-        1. Start the ssh-agent in the background: eval "$(ssh-agent -s)"
-        2. Add the private SSH key to the agent: ssh-add ~/.ssh/id_rsa_personal_github
-        3. Will need to push, pull etc via the command line rather than use VS Code running in WSL.
-
-
-TYPES & POINTERS
+## TYPES
 
 An array has a fixed size. A slice (data type in its own right) is a dynamically-sized flexible view into the elements of an array. 
 
 A struct is a collection of fields.
-
-Types are either value or reference types, where reference means the type has a reference to another type.
-
-Go passes by value which means a copy will be created when passing something to a function.
-
-The data types of bool, integer, float, string, array and struct are value types. To change in a function will need to use pointers to avoid copying:
-
-    - The & operator applied to a variable will return the address in memory of that variable (known as a pointer)
-    - The * operator:
-        - When used on a type means the type is a pointer to something of that type.
-        - When used on a pointer will access the value in the memory address held by the pointer.
 
 A map in Go is a collection of key-value pairs. All the keys must be of the same type and all the values must be of the same type however the type
 used for keys can be different to the type used for values.
@@ -91,39 +84,54 @@ used for keys can be different to the type used for values.
 As a general rule use maps to represent a collection of very similar items and structs when the items can be very different. Note that for 
 a struct you need to know the fields at compile time, and it's harder to iterate over the field values inside a struct.
 
+Types are either value or reference types, where reference means the type has a reference to another type. The data types of bool, integer,
+float, string, array and struct are value types.
+
 Can create anonymous types which are useful if you need a data structure that won't be used again, perhaps when marshaling/unmarshalling data or
 passing data to a template. For example:
 
-        person := struct {
-            fname string
-            lname string
-        }{
-            fname: "Chris",
-            lname: "Yoxall",
-        }
+    person := struct {
+        fname string
+        lname string
+    }{
+        fname: "Chris",
+        lname: "Yoxall",
+    }
+
+Go passes by value which means a copy will be created when passing something to a function. To change a value type in a function need
+to use pointers so the actual type is changed rather than the copy (referency types use pointers by default).
 
 
-GO ROUTINES
+## POINTERS
 
-Go Routines:
+- The & operator applied to a variable will return the address in memory of that variable (known as a pointer)
+- The * operator:
+    - When used on a type means the type is a pointer to something of that type.
+    - When used on a pointer will access the value in the memory address held by the pointer.
 
-    - Always get one main go routine started when the program starts.
-    - Can create additional go routines by using the keyword 'go' in front of a function call.
-    - The Go scheduler manages go routines and by default only uses 1 CPU. This means only 1 go routine actively runs at once no matter
-        how many exist (concurrent processing).
-    - Can utilise multiple CPU cores in which case there can be a go routine actively running on each CPU (parallel processing). Using 1 CPU
-        is usually recommended.
-    - Channels allow different go routines to communicate via the '<-' operator.
+## GO ROUTINES
+
+Always get one main go routine started when the program starts.
+
+Can create additional go routines by using the keyword 'go' in front of a function call.
+
+The Go scheduler manages go routines and by default only uses 1 CPU. This means only 1 go routine actively runs at once no matter
+how many exist (concurrent processing).
+
+Can utilise multiple CPU cores in which case there can be a go routine actively running on each CPU (parallel processing). Using 1 CPU
+is usually recommended.
+
+Channels allow different go routines to communicate via the '<-' operator.
 
 
 
-INTERFACES AND PATTERNS
+## INTERFACES AND PATTERNS
 
 Go is not an Object Oriented language. Patterns that get used in go are:
 
-    - Define methods on types by adding a receiver in argument lists between the func keyword and method name. Functions with recievers 
-        are referred to as methods.
+- Define methods on types by adding a receiver in argument lists between the func keyword and method name. Functions with recievers 
+    are referred to as methods.
 
-    - Create interfaces. Interfaces are collections of method signatures or other interfaces. Types that implement everything in the
-        interface have implemented the interface and can be referred to using the interface (polymorphism).
+- Create interfaces. Interfaces are collections of method signatures or other interfaces. Types that implement everything in the
+    interface have implemented the interface and can be referred to using the interface (polymorphism).
 
