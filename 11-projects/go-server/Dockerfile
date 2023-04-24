@@ -1,4 +1,10 @@
 # Example of using a scratch base image.
+#
+# Instead of scratch, the distroless image may be a better option as that comes with a one or two additional
+# packages such as tzdata https://github.com/GoogleContainerTools/distroless/blob/main/base/README.md. Can
+# just add them into scratch as needed however.
+#
+# There is a good blog post at https://hackernoon.com/distroless-containers-hype-or-true-value-2rfl3wat
 
 
 FROM golang:1.20.3-alpine3.17 as builder
@@ -38,7 +44,7 @@ COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
 USER appuser:appuser
 
-# Copy ca-certificates from builder. In some cases this will be needed.
+# Copy ca-certificates from builder. In some cases this will be needed i.e. when exposing service over SSL
 #COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
 COPY --from=builder /go/src/app .
