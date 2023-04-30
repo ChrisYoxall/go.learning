@@ -135,3 +135,52 @@ Go is not an Object Oriented language. Patterns that get used in go are:
 - Create interfaces. Interfaces are collections of method signatures or other interfaces. Types that implement everything in the
     interface have implemented the interface and can be referred to using the interface (polymorphism).
 
+
+## Static Compilation
+
+A lot of this section came from:
+
+- https://www.arp242.net/static-go.html
+- https://mt165.co.uk/blog/static-link-go
+
+
+By default Go creates static binaries unless cgo (https://pkg.go.dev/cmd/cgo) is used to call C code which results in a dynamically linked
+binary. To check whether the binary is statically compiled use 'file' or 'ldd'
+
+    file FILENAME
+
+or
+
+    ldd FILENAME
+
+Two packages in the Go standard library use cgo:
+
+- os/user: User account lookups. On Windows there is only the Go implementation so this does not apply.
+- net: Interface for network I/O, including TCP/IP, UDP, domain name resolution, and Unix domain sockets. 
+
+The Go binary will not be statically linked if it imports one of those two packages above, either directly or through a dependency. Can
+use the 'osuergo' and 'netgo' build tags to skip building the cgo parts:
+
+    go build -tags osusergo,netgo
+
+Or disable cgo completely:
+
+    CGO_ENABLED=0 go build
+
+This still results in a working binary as there are pure Go versions that wil be used instead but they are not totally feature compatible
+with the C implementations. They are close however so its usually fine.
+
+If you want to use cgo and have a statically linked binary can do:
+
+    go build -ldflags "-linkmode 'external' -extldflags '-static'"
+
+That command above tells the Go toolchain to use an external linker and gets that linker to produce a static binary. A lot of sites say that
+specifying an external linker is not needed.
+
+However you will usually get some warnings when using glibc (most common implementation of C statndard libraries) as glibc itself has dependencies
+on other libraries. If your binary doesn't rely on the functions in the warnings, again you should be fine.
+
+You can use musl (https://wiki.musl-libc.org/) to replace glibc which may help solve this. To use musl, you can either install it and build your
+software using musl-gcc, or you can use a Linux distribution that uses musl, e.g. Alpine Linux, as a build environment.
+
+In conclusion - relying on a static binary has risks.....
