@@ -10,36 +10,41 @@ General resources:
 - play-with-go https://play-with-go.dev/
 
 
-Good tutorial on unit testing web requests: https://codeburst.io/unit-testing-for-rest-apis-in-go-86c70dada52d
+Tutorials & Blog Posts:
+- Unit testing web requests: https://codeburst.io/unit-testing-for-rest-apis-in-go-86c70dada52d
+- Packages & modules: https://www.alexedwards.net/blog/an-introduction-to-packages-imports-and-modules
 
 
 Go resources:
-
-- Getting started covers adding packages and links to modules tutorial https://go.dev/doc/tutorial/getting-started
-- Code organisation (creating packages): https://go.dev/doc/code
-- Go packages: https://go.dev/pkg
-- Effective Go (see note near top about being outdated): https://go.dev/doc/effective_go
+- Getting started covers adding packages and links to modules tutorial https://go.dev/doc/tutorial/getting-started.
+- Code organisation (creating packages): https://go.dev/doc/code.
+- Go packages: https://go.dev/pkg.
+- Effective Go (see note near top about being outdated): https://go.dev/doc/effective_go.
 
 
 Packages:
-- collections of source files in the same directory that are compiled together
-- each go file declares which package it is part of
-- a program can be made up of multiple packages
-- to use code in a package include it via the import keyword
-- standard library packages installed with go are at https://pkg.go.dev/std
+- Collections of source files in the same directory that are compiled together.
+- Each go file declares which package it is part of.
+- Types, functions & variables in a package are available to other packages if they start with a capital letter.
+- To use code in a package include it via the import keyword.
+- Must have a main package that contains a main() function (by convention this is in a main.go file).
+- For non-main packages the directory should have the same name as the package.
+- Standard library packages installed with go are at https://pkg.go.dev/std.
 
 
-Dependencies:
-- are tracked through the projects module file called go.mod.
-- create go.mod file by something like 'go mod init example/cards'.
-- to publish a module, the module path in go.mod must be a location from which Go tools can download your module. 
-- for more, refer: https://go.dev/doc/modules/managing-dependencies
-- also refer https://go.dev/blog/using-go-modules
+Modules:
+- Are Go's Dependency management system.
+- Consist of one or more packages with with a 'go.mod' file at its root.
+- Are tracked through the projects module file called go.mod.
+- Create go.mod file by something like 'go mod init example/cards'.
+- The module path acts as a canonical identifier for a module.
+- To publish a module, the module path in go.mod must be a location from which Go tools can download your module. 
+- For more, refer: https://go.dev/doc/modules/managing-dependencies & https://go.dev/blog/using-go-modules
 
 
 Workspace:
-- by default it is at $HOME/go.
-- all installed packages (i.e. from doing go install) are here. This is the GOPATH.
+- Default location is $HOME/go.
+- All installed packages (i.e. from doing go install) are here. This is the GOPATH.
 
 
 
