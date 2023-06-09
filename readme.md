@@ -12,6 +12,7 @@ General resources:
 Tutorials & Blog Posts:
 - Unit testing web requests: https://codeburst.io/unit-testing-for-rest-apis-in-go-86c70dada52d
 - Packages & modules: https://www.alexedwards.net/blog/an-introduction-to-packages-imports-and-modules
+- Generics: https://medium.com/@lordmoma/master-generics-in-go-3f7da29c6efb
 
 
 Go resources:
