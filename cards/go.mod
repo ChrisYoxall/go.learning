@@ -1,3 +1,3 @@
-module example/cards
+module chrisyoxall/cards
 
-go 1.18
+go 1.20

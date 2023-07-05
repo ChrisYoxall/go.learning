@@ -1,6 +1,14 @@
 
 ## Resources
 
+Go resources:
+
+- Getting started covers adding packages and links to modules tutorial https://go.dev/doc/tutorial/getting-started.
+- Code organisation (creating packages): https://go.dev/doc/code.
+- Go packages: https://go.dev/pkg.
+- Effective Go (see note near top about being outdated): https://go.dev/doc/effective_go.
+
+
 General resources:
 
 - Udemy Go course: https://www.udemy.com/course/go-the-complete-developers-guide/learn
@@ -10,34 +18,39 @@ General resources:
 
 
 Tutorials & Blog Posts:
+
 - Unit testing web requests: https://codeburst.io/unit-testing-for-rest-apis-in-go-86c70dada52d
 - Packages & modules: https://www.alexedwards.net/blog/an-introduction-to-packages-imports-and-modules
 - Generics: https://medium.com/@lordmoma/master-generics-in-go-3f7da29c6efb
 
 
-Go resources:
-- Getting started covers adding packages and links to modules tutorial https://go.dev/doc/tutorial/getting-started.
-- Code organisation (creating packages): https://go.dev/doc/code.
-- Go packages: https://go.dev/pkg.
-- Effective Go (see note near top about being outdated): https://go.dev/doc/effective_go.
+Interview Questions (while I don't think these resourcses are a good way to prepare for an interview, they can be ok resources
+for learning Go features you may not be aware of):
+
+- https://levelup.gitconnected.com/15-go-interview-questions-from-the-linkedin-assessment-detailed-explanations-4f0878c9ff05
 
 
-Packages:
+## Packages
+
 - Collections of source files in the same directory that are compiled together.
-- Each go file declares which package it is part of.
-- Types, functions & variables in a package are available to other packages if they start with a capital letter.
-- To use code in a package include it via the import keyword.
-- Must have a main package that contains a main() function (by convention this is in a main.go file).
+- Code in a package can use all types, constants, variables, functions etc. defined within the package even when declared in a diferent file.
+- Every Go file must be a part of a package. The package it is part of is declared at the top of the file.
+- A Go executable needs an entrypoint main() function defined in a special package called main (by convention in a main.go file).
 - For non-main packages the directory should have the same name as the package.
+- Can have init() functions that will be run when the package is initialised.
+- To use code in a package include it via the import keyword.
+- Types, functions & variables in a package are available to other packages if they start with a capital letter.
 - Standard library packages installed with go are at https://pkg.go.dev/std.
+- I think modues changed how packages work, and am not sure you can reference other user packages without using a module now. Use to have to use $GOPATH prior to modules.
 
 
-Modules:
+## Modules
+
 - Are Go's Dependency management system.
 - Consist of one or more packages with with a 'go.mod' file at its root.
-- Are tracked through the projects module file called go.mod.
 - Create go.mod file by something like 'go mod init example/cards'.
 - The module path acts as a canonical identifier for a module.
+- When referencing packages in the same module the import statement is 'import {module path}/{path to the package relative to your go.mod file}'
 - To publish a module, the module path in go.mod must be a location from which Go tools can download your module. 
 - For more, refer: https://go.dev/doc/modules/managing-dependencies & https://go.dev/blog/using-go-modules
 
@@ -63,18 +76,20 @@ Currently on work laptop will need to:
 
 1. Start the ssh-agent in the background: eval "$(ssh-agent -s)"
 2. Add the private SSH key to the agent: ssh-add ~/.ssh/id_rsa_personal_github
-3. Will need to push, pull etc via the command line rather than use VS Code running in WSL.
+3. Will need to push, pull etc via the command line rather than use VS Code if running in WSL.
 
 
-## Build and Run
+## Build, Run & Test
 
-To run: Doing 'go run main.go' (or replace 'main.go' with '.') executes the program.
+The 'run' command compiles and runs the named go package. Can specify the package by either
+- Supplying a list of files, for example 'go run main.go deck.go'
+- Pattern matching a single package, for example 'go run .', 'go run *.go' or 'go run example/cards'
+- Refer https://pkg.go.dev/cmd/go#hdr-Compile_and_run_Go_program
 
-A go file using the reserved name 'main' is requied to generate an executable. The 'main.go' file needs a function called 'main'.
+Doing 'go build' compiles but does not install the result. Doing 'go build' ignores files that end in '_test.go'. See https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies
 
-To build: Doing 'go build main.go' will generate an executable.
+Doing 'go test' recompiles and runs tests. See https://pkg.go.dev/cmd/go#hdr-Test_packages
 
-To run tests: Do 'go test'. Needed a go.mod file to exist.
 
 
 ## TYPES
