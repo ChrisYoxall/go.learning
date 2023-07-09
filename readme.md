@@ -24,7 +24,7 @@ Tutorials & Blog Posts:
 - Generics: https://medium.com/@lordmoma/master-generics-in-go-3f7da29c6efb
 
 
-Interview Questions (while I don't think these resourcses are a good way to prepare for an interview, they can be ok resources
+Interview Questions (while I don't think these resources are a good way to prepare for an interview, they can be ok resources
 for learning Go features you may not be aware of):
 
 - https://levelup.gitconnected.com/15-go-interview-questions-from-the-linkedin-assessment-detailed-explanations-4f0878c9ff05
@@ -33,7 +33,7 @@ for learning Go features you may not be aware of):
 ## Packages
 
 - Collections of source files in the same directory that are compiled together.
-- Code in a package can use all types, constants, variables, functions etc. defined within the package even when declared in a diferent file.
+- Code in a package can use all types, constants, variables, functions etc. defined within the package even when declared in a different file.
 - Every Go file must be a part of a package. The package it is part of is declared at the top of the file.
 - A Go executable needs an entrypoint main() function defined in a special package called main (by convention in a main.go file).
 - For non-main packages the directory should have the same name as the package.
@@ -41,13 +41,13 @@ for learning Go features you may not be aware of):
 - To use code in a package include it via the import keyword.
 - Types, functions & variables in a package are available to other packages if they start with a capital letter.
 - Standard library packages installed with go are at https://pkg.go.dev/std.
-- I think modues changed how packages work, and am not sure you can reference other user packages without using a module now. Use to have to use $GOPATH prior to modules.
+- The introduction of modules changed how packages work. I don't think you can reference other user packages without using a module now. Use to have to use $GOPATH prior to modules.
 
 
 ## Modules
 
 - Are Go's Dependency management system.
-- Consist of one or more packages with with a 'go.mod' file at its root.
+- Consist of one or more packages with a 'go.mod' file at its root.
 - Create go.mod file by something like 'go mod init example/cards'.
 - The module path acts as a canonical identifier for a module.
 - When referencing packages in the same module the import statement is 'import {module path}/{path to the package relative to your go.mod file}'
@@ -65,7 +65,7 @@ Workspace:
 
 - Cant run own build binaries unless they are in the c:\dev folder.
 - Doing 'go run' builds and runs from a temp directory.  To see which directory do 'go run -work main.go'.
-- To change directory used set the GOTMPDIR environment variable. For example do :$env:GOTMPDIR = "C:\dev" (or set permanaently).
+- To change directory used set the GOTMPDIR environment variable. For example do :$env:GOTMPDIR = "C:\dev" (or set permanently).
 - When debugging found that I had to also set the output directory to a location within the c:\dev hierarchy as well.
 
 ## SSH
@@ -76,7 +76,7 @@ Currently on work laptop will need to:
 
 1. Start the ssh-agent in the background: eval "$(ssh-agent -s)"
 2. Add the private SSH key to the agent: ssh-add ~/.ssh/id_rsa_personal_github
-3. Will need to push, pull etc via the command line rather than use VS Code if running in WSL.
+3. Will need to push, pull etc. via the command line rather than use VS Code if running in WSL.
 
 
 ## Build, Run & Test
@@ -118,8 +118,8 @@ passing data to a template. For example:
         lname: "Yoxall",
     }
 
-Go passes by value which means a copy will be created when passing something to a function. To change a value type in a function need
-to use pointers so the actual type is changed rather than the copy (referency types use pointers by default).
+Go passes by value which means a copy will be created when passing something to a function. To change a value type in a function
+need to use pointers so the actual type is changed rather than the copy (reference types use pointers by default).
 
 
 ## POINTERS
@@ -147,13 +147,27 @@ Channels allow different go routines to communicate via the '<-' operator.
 
 ## INTERFACES AND PATTERNS
 
-Go is not an Object Oriented language. Patterns that get used in go are:
+Go is not an Object-Oriented language. Patterns that get used in go are:
 
-- Define methods on types by adding a receiver in argument lists between the func keyword and method name. Functions with recievers 
+- Define methods on types by adding a receiver in argument lists between the func keyword and method name. Functions with receivers 
     are referred to as methods.
 
 - Create interfaces. Interfaces are collections of method signatures or other interfaces. Types that implement everything in the
     interface have implemented the interface and can be referred to using the interface (polymorphism).
+
+If a type requires initialisation instead of a constructor:
+- Crete a function of the form NewT(<args>) *T
+- Use the built-in new function to return a pointer to the desired type and instantiate everything within that type to zero-values.
+
+### The IO Interface
+
+The 'io' package defines a number of interface types:
+- Reader
+- Writer
+- Seeker
+- Closer
+
+##
 
 
 ## Static Compilation
@@ -164,7 +178,7 @@ A lot of this section came from:
 - https://mt165.co.uk/blog/static-link-go
 
 
-By default Go creates static binaries unless cgo (https://pkg.go.dev/cmd/cgo) is used to call C code which results in a dynamically linked
+By default, Go creates static binaries unless cgo (https://pkg.go.dev/cmd/cgo) is used to call C code which results in a dynamically linked
 binary. To check whether the binary is statically compiled use 'file' or 'ldd'
 
     file FILENAME
@@ -187,7 +201,7 @@ Or disable cgo completely:
 
     CGO_ENABLED=0 go build
 
-This still results in a working binary as there are pure Go versions that wil be used instead but they are not totally feature compatible
+This still results in a working binary as there are pure Go versions that wil be used instead, but they are not totally feature compatible
 with the C implementations. They are close however so its usually fine.
 
 If you want to use cgo and have a statically linked binary can do:
@@ -197,7 +211,7 @@ If you want to use cgo and have a statically linked binary can do:
 That command above tells the Go toolchain to use an external linker and gets that linker to produce a static binary. A lot of sites say that
 specifying an external linker is not needed.
 
-However you will usually get some warnings when using glibc (most common implementation of C statndard libraries) as glibc itself has dependencies
+However, you will usually get some warnings when using glibc (most common implementation of C standard libraries) as glibc itself has dependencies
 on other libraries. If your binary doesn't rely on the functions in the warnings, again you should be fine.
 
 You can use musl (https://wiki.musl-libc.org/) to replace glibc which may help solve this. To use musl, you can either install it and build your
