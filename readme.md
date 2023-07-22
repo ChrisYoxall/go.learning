@@ -60,7 +60,6 @@ Workspace:
 - All installed packages (i.e. from doing go install) are here. This is the GOPATH.
 
 
-
 ## Work laptop
 
 - Cant run own build binaries unless they are in the c:\dev folder.
@@ -104,8 +103,9 @@ used for keys can be different to the type used for values.
 As a general rule use maps to represent a collection of very similar items and structs when the items can be very different. Note that for 
 a struct you need to know the fields at compile time, and it's harder to iterate over the field values inside a struct.
 
-Types are either value or reference types, where reference means the type has a reference to another type. The data types of bool, integer,
-float, string, array and struct are value types.
+Types are either value or reference types, where reference means the type has a reference to another type:
+- Value types: bool, integer, float, string, array and struct.
+- Reference types: slice, map, channel, pointer, interface and functions.
 
 Can create anonymous types which are useful if you need a data structure that won't be used again, perhaps when marshaling/unmarshalling data or
 passing data to a template. For example:
@@ -155,9 +155,11 @@ Go is not an Object-Oriented language. Patterns that get used in go are:
 - Create interfaces. Interfaces are collections of method signatures or other interfaces. Types that implement everything in the
     interface have implemented the interface and can be referred to using the interface (polymorphism).
 
-If a type requires initialisation instead of a constructor:
-- Crete a function of the form NewT(<args>) *T
-- Use the built-in new function to return a pointer to the desired type and instantiate everything within that type to zero-values.
+- If a type requires initialisation instead of a constructor:
+  - Crete a function of the form NewT(<args>) *T
+  - Use the built-in new function to return a pointer to the desired type and instantiate everything within that type to zero-values.
+
+See the examples under the 'patterns' directory.
 
 ### The IO Interface
 
@@ -167,7 +169,6 @@ The 'io' package defines a number of interface types:
 - Seeker
 - Closer
 
-##
 
 
 ## Static Compilation
