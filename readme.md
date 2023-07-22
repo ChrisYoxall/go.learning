@@ -69,7 +69,9 @@ Workspace:
 
 ## SSH
 
-Have enabled SSH for this repo on GitHub. Are good instructions at https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
+Have enabled SSH for this repo on GitHub:
+- Start the OpenSSH agent (-s generates Bourne shell commands): eval "$(ssh-agent -s)"
+- Add private key to agent: ssh-add ~/.ssh/id_rsa_personal_github
 
 Currently on work laptop will need to:
 
