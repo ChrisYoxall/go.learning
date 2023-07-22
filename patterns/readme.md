@@ -1,10 +1,10 @@
 # Design Patterns
 
-The 23 Gang of Four patterns from the book “Design Patterns: Elements of Reusable Object-Oriented Software” are generally considered the
-foundation for all other patterns.
+The 23 Gang of Four patterns from the book “Design Patterns: Elements of Reusable Object-Oriented Software” (1994) are 
+generally considered the foundation for all other patterns.
 
-I've created this page as it's been a while since I've gone over these design patterns. Go is not an Object-Oriented language,
-so I'm interested to see how these patterns can be implemented in Go as part of my Go learning.
+I've created this page as it's been a while since I've gone over these design patterns. Go is not an Object-Oriented
+language, so I'm interested to see how these patterns can be implemented in Go as part of my Go learning.
 
 ## Object Creation Patterns
 
@@ -30,7 +30,8 @@ Deals with class structure such as Inheritance and Composition.
 
 ## Behavioral Patterns
 
-Patterns for better interaction between objects, how to provide lose coupling, and flexibility to extend easily in the future.
+Patterns for better interaction between objects, how to provide lose coupling, and flexibility to extend easily in 
+the future.
 
 - Chain of Resp: A way of passing a request between a chain of objects.
 - Command: Encapsulate a command request as an object.
