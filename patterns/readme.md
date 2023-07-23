@@ -6,6 +6,8 @@ generally considered the foundation for all other patterns.
 I've created this page as it's been a while since I've gone over these design patterns. Go is not an Object-Oriented
 language, so I'm interested to see how these patterns can be implemented in Go as part of my Go learning.
 
+There is a very good website on these patterns at https://refactoring.guru/design-patterns
+
 ## Object Creation Patterns
 
 Deals with the creation of objects.
