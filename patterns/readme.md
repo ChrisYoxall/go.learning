@@ -32,8 +32,7 @@ Deals with class structure such as Inheritance and Composition.
 
 ## Behavioral Patterns
 
-Patterns for better interaction between objects, how to provide lose coupling, and flexibility to extend easily in 
-the future.
+Patterns for better interaction between objects, how to provide lose coupling, and flexibility to extend easily in the future.
 
 - Chain of Resp: A way of passing a request between a chain of objects.
 - Command: Encapsulate a command request as an object.
