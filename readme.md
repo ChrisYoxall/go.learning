@@ -29,6 +29,8 @@ for learning Go features you may not be aware of):
 
 - https://levelup.gitconnected.com/15-go-interview-questions-from-the-linkedin-assessment-detailed-explanations-4f0878c9ff05
 
+GoLand Documentation: https://www.jetbrains.com/help/go/getting-started.html
+
 
 ## Packages
 
