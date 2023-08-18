@@ -89,9 +89,9 @@ The 'run' command compiles and runs the named go package. Can specify the packag
 - Pattern matching a single package, for example 'go run .', 'go run *.go' or 'go run example/cards'
 - Refer https://pkg.go.dev/cmd/go#hdr-Compile_and_run_Go_program
 
-Doing 'go build' compiles but does not install the result. Doing 'go build' ignores files that end in '_test.go'. See https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies
+Doing 'go build' compiles but does not install the result and ignores files that end in '_test.go'. See https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies
 
-Doing 'go test' recompiles and runs tests. See https://pkg.go.dev/cmd/go#hdr-Test_packages
+Doing 'go test' (include -v for verbose) recompiles and runs tests. See https://pkg.go.dev/cmd/go#hdr-Test_packages
 
 
 
