@@ -15,6 +15,11 @@ General resources:
 - Udemy web developer course: https://www.udemy.com/course/go-programming-language and repo at https://github.com/GoesToEleven/golang-web-dev
 - Pluralsight: https://app.pluralsight.com/paths/skill/go-core-language
 - play-with-go https://play-with-go.dev/
+- 30 part series on learning Go  https://dev.to/karanpratapsingh/series/18754
+
+
+
+https://dev.to/karanpratapsingh/series/18754
 
 
 Tutorials & Blog Posts:
