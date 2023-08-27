@@ -26,11 +26,11 @@ func main() {
 	}
 
 	// Waiting for message from channel is a blocking call. Note how range call here uses
-	// normal syntax, but not interating over a known list - rather iterating on each response
+	// normal syntax, but not integrating over a known list - rather iterating on each response
 	// from channel.
 	for link := range c {
 
-		// Example of function literal (similar to anonymous funtions).
+		// Example of function literal (similar to anonymous functions).
 		go func(l string) {
 			time.Sleep(5 * time.Second)
 			checkLink(l, c)

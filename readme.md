@@ -138,19 +138,39 @@ need to use pointers so the actual type is changed rather than the copy (referen
     - When used on a type means the type is a pointer to something of that type.
     - When used on a pointer will access the value in the memory address held by the pointer.
 
+
 ## GO ROUTINES
 
-Always get one main go routine started when the program starts.
-
-Can create additional go routines by using the keyword 'go' in front of a function call.
+A goroutine is a lightweight thread of execution managed by the Go runtime. They are not actual OS threads and the main
+routine itself is a goroutine. Create additional goroutines by using the keyword 'go' in front of a function call.
 
 The Go scheduler manages go routines and by default only uses 1 CPU. This means only 1 go routine actively runs at once no matter
 how many exist (concurrent processing).
 
+Concurrency is not Parallelism. A quote from Rob Pike: "Concurrency is about dealing with lots of things at once. Parallelism
+is about doing lots of things at once"
+
 Can utilise multiple CPU cores in which case there can be a go routine actively running on each CPU (parallel processing). Using 1 CPU
 is usually recommended.
 
-Channels allow different go routines to communicate via the '<-' operator.
+Channels allow different go routines to communicate via the '<-' operator. Can:
+
+- Send data to a channel: channel <- 5
+- Receive data from a channel (blocking statement): myVar := <- channel
+
+Can specify a buffer for channels and also specify if they should send or receive only (the default is both), for example:
+
+The 'select' statement in go is similar in some way to switch but for channels. It allows you to wait on multiple channel operations.
+
+Remember to close the channel when finished with it.
+
+The sync package https://pkg.go.dev/sync provides a number of useful functions for synchronising go routines.
+
+Search for 'Go Concurrency Patterns' when doing something non-trivial.
+
+In concurrent programs, it's often necessary to preempt operations because of timeouts, cancellation, or failure of another portion of
+the system. The context package makes it easy to pass request-scoped values, cancellation signals, and deadlines across API boundaries to
+all the goroutines involved in handling a request.
 
 
 
