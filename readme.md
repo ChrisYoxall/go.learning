@@ -158,7 +158,7 @@ Channels allow different go routines to communicate via the '<-' operator. Can:
 - Send data to a channel: channel <- 5
 - Receive data from a channel (blocking statement): myVar := <- channel
 
-Can specify a buffer for channels and also specify if they should send or receive only (the default is both), for example:
+Can specify a buffer for channels and also specify if they should send or receive only (the default is both).
 
 The 'select' statement in go is similar in some way to switch but for channels. It allows you to wait on multiple channel operations.
 
