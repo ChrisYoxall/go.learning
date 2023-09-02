@@ -158,7 +158,11 @@ Channels allow different go routines to communicate via the '<-' operator. Can:
 - Send data to a channel: channel <- 5
 - Receive data from a channel (blocking statement): myVar := <- channel
 
-Can specify a buffer for channels and also specify if they should send or receive only (the default is both).
+Can specify a buffer for channels and also specify if a channel is either send or receive only (the default is both).
+
+Receiving from a channel will block until there is data to receive. If the channel is unbuffered, sending to the channel blocks
+until a receiver has received the value. If the channel has a buffer, the sender blocks only until the value has been copied to the
+buffer and if the buffer is full, this blocks until a value has been received which frees up a spot in the buffer to write the value.
 
 The 'select' statement in go is similar in some way to switch but for channels. It allows you to wait on multiple channel operations.
 
@@ -171,6 +175,8 @@ Search for 'Go Concurrency Patterns' when doing something non-trivial.
 In concurrent programs, it's often necessary to preempt operations because of timeouts, cancellation, or failure of another portion of
 the system. The context package makes it easy to pass request-scoped values, cancellation signals, and deadlines across API boundaries to
 all the goroutines involved in handling a request.
+
+Beware of using a loop variable in a closure running as a goroutine. Refer https://go.dev/doc/faq#closures_and_goroutines
 
 
 
