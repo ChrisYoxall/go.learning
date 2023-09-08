@@ -74,17 +74,6 @@ Workspace:
 - To change directory used set the GOTMPDIR environment variable. For example do :$env:GOTMPDIR = "C:\dev" (or set permanently).
 - When debugging found that I had to also set the output directory to a location within the c:\dev hierarchy as well.
 
-## SSH
-
-Have enabled SSH for this repo on GitHub:
-- Start the OpenSSH agent (-s generates Bourne shell commands): eval "$(ssh-agent -s)"
-- Add private key to agent: ssh-add ~/.ssh/id_rsa_personal_github
-
-Currently on work laptop will need to:
-
-1. Start the ssh-agent in the background: eval "$(ssh-agent -s)"
-2. Add the private SSH key to the agent: ssh-add ~/.ssh/id_rsa_personal_github
-3. Will need to push, pull etc. via the command line rather than use VS Code if running in WSL.
 
 
 ## Build, Run & Test
