@@ -1,69 +1,84 @@
-/* This is an attempt to process a queue with a limited number of workers, where the number of workers
-is increased or decreased over time. Seems to work, however if it was a remote queue that was being
-processed I wouldn't want to do this as the workers check the length of the queue every iteration.
-
-Most solutions online seem to use a WaitGroup to start batches of workers.
-*/
-
 package main
 
 import (
 	"fmt"
+	"math/rand"
 	"runtime"
+	"sync"
 	"time"
 )
 
 const QueueLength = 50
-const QueueTriggerLevel = 10
 const MaxWorkers = 15
 
-func writeToQueue(c chan int) {
+type message struct {
+	id int
+}
+
+func randInt(min, max int) int {
+	return min + rand.Intn(max-min)
+}
+
+func writeToQueue(c chan message) {
 
 	id := 0
 
 	// A buffered channel can be used like a semaphore. In this case it limits the number of items in the queue
 	// and when full adding another value to the queue will block until there is space to add the value.
 	for {
-		time.Sleep(250 * time.Millisecond)
-		c <- id
+		r := randInt(200, 500)
+		time.Sleep(time.Duration(r) * time.Millisecond)
+		c <- message{id: id}
 		id++
 	}
 
 }
 
-func readFromQueue(c chan int) {
+func processMessage(m message, wg *sync.WaitGroup) {
 
-	for {
-		id := <-c
+	defer wg.Done()
 
-		time.Sleep(2 * time.Second) // Simulate processing the item.
+	// simulate doing some work
+	r := randInt(2, 5)
+	time.Sleep(time.Duration(r) * time.Second)
 
-		fmt.Printf("Finished processing message %d.\n", id)
+	fmt.Printf("Finished processing message %d.\n", m.id)
 
-		if len(c) < QueueTriggerLevel {
-			fmt.Printf("Worker is quitting.\n")
-			break
-		}
-	}
 }
 
 func main() {
 
 	// Create a buffered channel. The channel will hold the number of values specified by its size at which point it
-	// will start blocking if another value is added. Can only get the number of items in a channel if it is buffered.
-	c := make(chan int, QueueLength)
+	// will start blocking if another value is added. Only buffered channels will have a length.
+	c := make(chan message, QueueLength)
 
 	go writeToQueue(c)
 
-	for {
-		time.Sleep(2 * time.Second)
+	fmt.Println("Sleeping while some items get added to the queue..")
+	time.Sleep(2 * time.Second)
 
+	for {
 		queueLength := len(c)
 		fmt.Printf("There are %d goroutines running and %d items in the queue.\n", runtime.NumGoroutine(), queueLength)
 
-		if queueLength > QueueTriggerLevel && runtime.NumGoroutine() < MaxWorkers {
-			fmt.Printf("Starting new worker.\n")
-			go readFromQueue(c)
+		wg := sync.WaitGroup{}
+
+		var requiredWorkers int
+
+		if queueLength >= MaxWorkers {
+			requiredWorkers = MaxWorkers
+		} else {
+			requiredWorkers = queueLength
 		}
+
+		fmt.Printf("Starting %d workers.\n", requiredWorkers)
+		for i := 0; i < requiredWorkers; i++ {
+			wg.Add(1)
+			go processMessage(<-c, &wg)
+		}
+
+		fmt.Printf("There are %d goroutines running. Waiting for workers to finish...\n", runtime.NumGoroutine())
+
+		wg.Wait()
 	}
 }

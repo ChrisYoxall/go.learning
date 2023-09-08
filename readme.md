@@ -151,7 +151,7 @@ Can specify a buffer for channels and also specify if a channel is either send o
 
 Receiving from a channel will block until there is data to receive. If the channel is unbuffered, sending to the channel blocks
 until a receiver has received the value. If the channel has a buffer, the sender blocks only until the value has been copied to the
-buffer and if the buffer is full, this blocks until a value has been received which frees up a spot in the buffer to write the value.
+buffer and if the buffer is full this blocks until a value has been received which frees up a spot in the buffer to write the value.
 
 The 'select' statement in go is similar in some way to switch but for channels. It allows you to wait on multiple channel operations.
 
@@ -166,6 +166,9 @@ the system. The context package makes it easy to pass request-scoped values, can
 all the goroutines involved in handling a request.
 
 Beware of using a loop variable in a closure running as a goroutine. Refer https://go.dev/doc/faq#closures_and_goroutines
+
+To send a signal via a channel it's common to use a channel of type 'struct{}' which is zero size. Can create a 'struct{}'
+by doing 'struct{}{}' which is a composite literal.
 
 
 
