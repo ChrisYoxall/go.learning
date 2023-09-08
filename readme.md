@@ -15,8 +15,6 @@ General resources:
 - Udemy web developer course: https://www.udemy.com/course/go-programming-language and repo at https://github.com/GoesToEleven/golang-web-dev
 - Pluralsight: https://app.pluralsight.com/paths/skill/go-core-language
 - play-with-go https://play-with-go.dev/
-- 30 part series on learning Go  https://dev.to/karanpratapsingh/series/18754
-
 
 
 https://dev.to/karanpratapsingh/series/18754
@@ -29,10 +27,12 @@ Tutorials & Blog Posts:
 - Generics: https://medium.com/@lordmoma/master-generics-in-go-3f7da29c6efb
 
 
-Interview Questions (while I don't think these resources are a good way to prepare for an interview, they can be ok resources
-for learning Go features you may not be aware of):
+Posts on Interview Questions or Go Gotchas:
 
 - https://levelup.gitconnected.com/15-go-interview-questions-from-the-linkedin-assessment-detailed-explanations-4f0878c9ff05
+- https://medium.com/@ninucium/go-interview-questions-part-1-pointers-channels-and-range-67c61345cf3c
+- https://golang50shad.es/
+
 
 GoLand Documentation: https://www.jetbrains.com/help/go/getting-started.html
 
@@ -168,7 +168,8 @@ all the goroutines involved in handling a request.
 Beware of using a loop variable in a closure running as a goroutine. Refer https://go.dev/doc/faq#closures_and_goroutines
 
 To send a signal via a channel it's common to use a channel of type 'struct{}' which is zero size. Can create a 'struct{}'
-by doing 'struct{}{}' which is a composite literal.
+by doing 'struct{}{}' which is a composite literal. See 'Done()' in side the context package https://pkg.go.dev/context#Context
+for an example.
 
 
 
