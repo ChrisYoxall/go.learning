@@ -7,6 +7,7 @@ Go resources:
 - Code organisation (creating packages): https://go.dev/doc/code.
 - Go packages: https://go.dev/pkg.
 - Effective Go (see note near top about being outdated): https://go.dev/doc/effective_go.
+- Is a section in Effective Go on naming conventions: https://go.dev/doc/effective_go#names, but also see https://blog.devgenius.io/golang-name-convention-gophers-should-follow-e4397fba5dce
 
 
 General resources:
@@ -15,9 +16,6 @@ General resources:
 - Udemy web developer course: https://www.udemy.com/course/go-programming-language and repo at https://github.com/GoesToEleven/golang-web-dev
 - Pluralsight: https://app.pluralsight.com/paths/skill/go-core-language
 - play-with-go https://play-with-go.dev/
-
-
-https://dev.to/karanpratapsingh/series/18754
 
 
 Tutorials & Blog Posts:
