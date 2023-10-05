@@ -6,6 +6,7 @@ Go resources:
 - Getting started covers adding packages and links to modules tutorial https://go.dev/doc/tutorial/getting-started.
 - Code organisation (creating packages): https://go.dev/doc/code.
 - Go packages: https://go.dev/pkg.
+- Go Vulnerability Management: https://pkg.go.dev/golang.org/x/vuln
 - Effective Go (see note near top about being outdated): https://go.dev/doc/effective_go.
 - Is a section in Effective Go on naming conventions: https://go.dev/doc/effective_go#names, but also see https://blog.devgenius.io/golang-name-convention-gophers-should-follow-e4397fba5dce
 
@@ -23,6 +24,9 @@ Tutorials & Blog Posts:
 - Unit testing web requests: https://codeburst.io/unit-testing-for-rest-apis-in-go-86c70dada52d
 - Packages & modules: https://www.alexedwards.net/blog/an-introduction-to-packages-imports-and-modules
 - Generics: https://medium.com/@lordmoma/master-generics-in-go-3f7da29c6efb
+- Mastering Gin: https://itnext.io/mastering-gin-in-golang-48a7bdfb3091
+- Top 10 common Go mistakes: https://itnext.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects-4b79d4f6cd65
+
 
 
 Posts on Interview Questions or Go Gotchas:
@@ -143,7 +147,7 @@ is usually recommended.
 Channels allow different go routines to communicate via the '<-' operator. Can:
 
 - Send data to a channel: channel <- 5
-- Receive data from a channel (blocking statement): myVar := <- channel
+- Receive data from a channel. Don't need the variable. (blocking statement): myVar := <- channel
 
 Can specify a buffer for channels and also specify if a channel is either send or receive only (the default is both).
 
