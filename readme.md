@@ -3,6 +3,8 @@
 
 Go resources:
 
+- Go documentation: https://golang.org/doc/
+- Go style guide: https://google.github.io/styleguide/go/index
 - Getting started covers adding packages and links to modules tutorial https://go.dev/doc/tutorial/getting-started.
 - Code organisation (creating packages): https://go.dev/doc/code.
 - Go packages: https://go.dev/pkg.
