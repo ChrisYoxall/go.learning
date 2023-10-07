@@ -53,6 +53,7 @@ GoLand Documentation: https://www.jetbrains.com/help/go/getting-started.html
 - Types, functions & variables in a package are available to other packages if they start with a capital letter.
 - Standard library packages installed with go are at https://pkg.go.dev/std.
 - The introduction of modules changed how packages work. I don't think you can reference other user packages without using a module now. Use to have to use $GOPATH prior to modules.
+- The internal folder is a special folder that can only be imported by packages within the tree rooted at the parent of the internal directory
 
 
 ## Modules
