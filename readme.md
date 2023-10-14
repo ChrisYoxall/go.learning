@@ -36,6 +36,7 @@ Posts on Interview Questions or Go Gotchas:
 - https://levelup.gitconnected.com/15-go-interview-questions-from-the-linkedin-assessment-detailed-explanations-4f0878c9ff05
 - https://medium.com/@ninucium/go-interview-questions-part-1-pointers-channels-and-range-67c61345cf3c
 - https://golang50shad.es/
+- https://dsysd-dev.medium.com/20-advanced-questions-asked-for-a-senior-developer-position-interview-1a65203e5d5e
 
 
 GoLand Documentation: https://www.jetbrains.com/help/go/getting-started.html
