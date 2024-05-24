@@ -1,8 +1,8 @@
 // Simple web server. For anything more than a few responses there are plenty
 // of web frameworks to use such as Gin or Fiber.
 
-// Note that Go 1.22 introduces enhanced routing capabilities to the ServeMux handler.
-// See https://douglasmakey.medium.com/go-1-22s-http-package-updates-42aca70ceb9b
+// Note that Go 1.22 introduced enhanced routing capabilities to the ServeMux handler.
+// Refer https://go.dev/blog/routing-enhancements
 
 package main
 
@@ -50,9 +50,9 @@ func main() {
 	// examples) is a security concern as the default 'ServeMux' is stored in a global variable where any third party
 	// package can access it and register a route (i.e. a handlers). Instead, create a locally scoped ServeMux.
 	mux := http.NewServeMux()
-	mux.Handle("/", http.FileServer(http.Dir("./static"))) // called via http://localhost:8080 which will serve index.html by default
-	mux.HandleFunc("/form", formHandler)                   // called when submitting the form  http://localhost:8080/form.html
-	mux.HandleFunc("/hello", helloHandler)                 // called via http://localhost:8080/hello
+	mux.Handle("GET /", http.FileServer(http.Dir("./static"))) // called via http://localhost:8080 which will serve index.html by default
+	mux.HandleFunc("POST /form", formHandler)                  // called when submitting the form  http://localhost:8080/form.html
+	mux.HandleFunc("GET /hello", helloHandler)                 // called via http://localhost:8080/hello
 
 	port := 8080
 
