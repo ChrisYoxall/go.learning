@@ -13,11 +13,15 @@ Go resources:
 - Is a section in Effective Go on naming conventions: https://go.dev/doc/effective_go#names, but also see https://blog.devgenius.io/golang-name-convention-gophers-should-follow-e4397fba5dce
 
 
+Frameworks to experiment with:
+- GoFr is an Opinionated Go Framework for accelerated microservice development: https://gofr.dev/ (1.3k stars on GitHub)
+- Go kit is a toolkit for microservices https://gokit.io/ (26k stars on GitHub)
+
+
 General resources:
 
 - Udemy Go course: https://www.udemy.com/course/go-the-complete-developers-guide/learn
 - Udemy web developer course: https://www.udemy.com/course/go-programming-language and repo at https://github.com/GoesToEleven/golang-web-dev
-- Pluralsight: https://app.pluralsight.com/paths/skill/go-core-language
 - play-with-go https://play-with-go.dev/
 
 
