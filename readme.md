@@ -3,14 +3,14 @@
 
 Go resources:
 
-- Go documentation: https://golang.org/doc/
+- Go documentation: https://go.dev/doc/     There is a lot of stuff here and can be used as a resource for leaning Go.
+- Effective Go (see note near top about being outdated): https://go.dev/doc/effective_go
 - Go style guide: https://google.github.io/styleguide/go/index
-- Getting started covers adding packages and links to modules tutorial https://go.dev/doc/tutorial/getting-started.
 - Code organisation (creating packages): https://go.dev/doc/code.
 - Go packages: https://go.dev/pkg.
 - Go Vulnerability Management: https://pkg.go.dev/golang.org/x/vuln
-- Effective Go (see note near top about being outdated): https://go.dev/doc/effective_go.
-- Is a section in Effective Go on naming conventions: https://go.dev/doc/effective_go#names, but also see https://blog.devgenius.io/golang-name-convention-gophers-should-follow-e4397fba5dce
+
+GoLand Documentation: https://www.jetbrains.com/help/go/getting-started.html
 
 
 Frameworks to experiment with:
@@ -18,58 +18,33 @@ Frameworks to experiment with:
 - Go kit is a toolkit for microservices https://gokit.io/ (26k stars on GitHub)
 
 
-General resources:
-
-- Udemy Go course: https://www.udemy.com/course/go-the-complete-developers-guide/learn
-- Udemy web developer course: https://www.udemy.com/course/go-programming-language and repo at https://github.com/GoesToEleven/golang-web-dev
-- play-with-go https://play-with-go.dev/
-
-
-Tutorials & Blog Posts:
-
-- Unit testing web requests: https://codeburst.io/unit-testing-for-rest-apis-in-go-86c70dada52d
-- Packages & modules: https://www.alexedwards.net/blog/an-introduction-to-packages-imports-and-modules
-- Generics: https://medium.com/@lordmoma/master-generics-in-go-3f7da29c6efb
-- Mastering Gin: https://itnext.io/mastering-gin-in-golang-48a7bdfb3091
-- Top 10 common Go mistakes: https://itnext.io/the-top-10-most-common-mistakes-ive-seen-in-go-projects-4b79d4f6cd65
-
-
-
-Posts on Interview Questions or Go Gotchas:
-
-- https://levelup.gitconnected.com/15-go-interview-questions-from-the-linkedin-assessment-detailed-explanations-4f0878c9ff05
-- https://medium.com/@ninucium/go-interview-questions-part-1-pointers-channels-and-range-67c61345cf3c
-- https://golang50shad.es/
-- https://dsysd-dev.medium.com/20-advanced-questions-asked-for-a-senior-developer-position-interview-1a65203e5d5e
-
-
-GoLand Documentation: https://www.jetbrains.com/help/go/getting-started.html
-
-
 ## Packages
 
-- Collections of source files in the same directory that are compiled together.
+- Collections of source files within the same directory that are compiled together.
 - Code in a package can use all types, constants, variables, functions etc. defined within the package even when declared in a different file.
-- Every Go file must be a part of a package. The package it is part of is declared at the top of the file.
-- A Go executable needs an entrypoint main() function defined in a special package called main (by convention in a main.go file).
-- For non-main packages the directory should have the same name as the package.
-- Can have init() functions that will be run when the package is initialised.
-- To use code in a package include it via the import keyword.
 - Types, functions & variables in a package are available to other packages if they start with a capital letter.
+- Every Go file must be a part of a package. The package it is part of is declared at the top of the file.
+- Can have init() functions that will be run when the package is initialised.
 - Standard library packages installed with go are at https://pkg.go.dev/std.
-- The introduction of modules changed how packages work. I don't think you can reference other user packages without using a module now. Use to have to use $GOPATH prior to modules.
-- The internal folder is a special folder that can only be imported by packages within the tree rooted at the parent of the internal directory
+- To use code in a package include it in the current file by using the 'import' keyword.
+- To include packages you create as part of an application specify the module name before the package name (i.e. import "[module-name]/[package-name]")
+- For non-main packages the directory should have the same name as the package.
+- A Go executable needs an entrypoint main() function defined in a special package called main (by convention in a main.go file).
+
+The introduction of modules changed how packages work. I don't think you can reference other user packages without using a module now. Use to have to use $GOPATH prior to modules.
+
+The internal folder is a special folder that can only be imported by packages within the tree rooted at the parent of the internal directory
 
 
 ## Modules
 
-- Are Go's Dependency management system.
+- The unit of code distribution and versioning in Go.
 - Consist of one or more packages with a 'go.mod' file at its root.
 - Create go.mod file by something like 'go mod init example/cards'.
-- The module path acts as a canonical identifier for a module.
+- The module path acts as a canonical identifier for a module, and is typically an URL where the module is hosted.
 - When referencing packages in the same module the import statement is 'import {module path}/{path to the package relative to your go.mod file}'
 - To publish a module, the module path in go.mod must be a location from which Go tools can download your module. 
-- For more, refer: https://go.dev/doc/modules/managing-dependencies & https://go.dev/blog/using-go-modules
+- For more, refer: https://go.dev/doc/modules/managing-dependencies & https://go.dev/blog/using-go-modules & https://go.dev/doc/code#ImportingRemote
 
 
 Workspace:
@@ -77,21 +52,12 @@ Workspace:
 - All installed packages (i.e. from doing go install) are here. This is the GOPATH.
 
 
-## Work laptop
-
-- Cant run own build binaries unless they are in the c:\dev folder.
-- Doing 'go run' builds and runs from a temp directory.  To see which directory do 'go run -work main.go'.
-- To change directory used set the GOTMPDIR environment variable. For example do :$env:GOTMPDIR = "C:\dev" (or set permanently).
-- When debugging found that I had to also set the output directory to a location within the c:\dev hierarchy as well.
-
-
-
 ## Build, Run & Test
 
 The 'run' command compiles and runs the named go package. Can specify the package by either
 - Supplying a list of files, for example 'go run main.go deck.go'
 - Pattern matching a single package, for example 'go run .', 'go run *.go' or 'go run example/cards'
-- Refer https://pkg.go.dev/cmd/go#hdr-Compile_and_run_Go_program
+- Refer https://pkg.go.dev/cmd/go#hdr-Compile_and_run_Go_program (which is part of the standard library documentation on the Go tool)
 
 Doing 'go build' compiles but does not install the result and ignores files that end in '_test.go'. See https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies
 
@@ -114,6 +80,8 @@ a struct you need to know the fields at compile time, and it's harder to iterate
 Types are either value or reference types, where reference means the type has a reference to another type:
 - Value types: bool, integer, float, string, array and struct.
 - Reference types: slice, map, channel, pointer, interface and functions.
+
+When those reference types above are not set to a value, nil (not null) is used.
 
 Can create anonymous types which are useful if you need a data structure that won't be used again, perhaps when marshaling/unmarshalling data or
 passing data to a template. For example:
